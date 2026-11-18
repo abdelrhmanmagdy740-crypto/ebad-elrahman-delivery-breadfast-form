@@ -150,35 +150,100 @@
                     <input type="text" id="supplierName" name="supplierName" class="w-full bg-darkBg border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-neonPink transition" placeholder="أدخل اسم المورد إن وجدت">
                 </div>
 
-                <!-- Document Uploads (6 to 11) with Camera & Gallery Choice Support -->
+                <!-- Document Uploads with Dual Buttons (Camera & Gallery) -->
                 <div class="border-t border-gray-700 pt-6">
-                    <h3 class="text-lg font-bold text-neonOrange mb-2"><i class="fa-solid fa-camera ml-2"></i> المستندات المطلوبة (التقاط بالكاميرا أو اختيار من المعرض)</h3>
-                    <p class="text-xs text-gray-400 mb-4">عند الضغط على أي خانة، ستظهر لك خيارات الهاتف لاختيار التصوير بالكاميرا الفورية أو رفع صورة جاهزة من المعرض.</p>
+                    <h3 class="text-lg font-bold text-neonOrange mb-2"><i class="fa-solid fa-camera ml-2"></i> المستندات المطلوبة (تصوير بالكاميرا أو رفع من المعرض)</h3>
+                    <p class="text-xs text-gray-400 mb-4">لكل مستند، يمكنك الضغط على زر (📷 التقاط بالكاميرا) أو زر (🖼️ اختيار من المعرض).</p>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">6. بطاقة شخصية (الأمامية)</label>
-                            <input type="file" name="idFront" accept="image/*" class="w-full text-xs text-gray-400 file:mr-2 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-neonPink file:text-white hover:file:bg-pink-700 bg-darkBg border border-gray-700 rounded-xl p-2">
+                    <div class="space-y-4">
+                        <!-- 6. بطاقة شخصية (الأمامية) -->
+                        <div class="bg-darkBg p-4 rounded-xl border border-gray-700">
+                            <label class="block text-xs font-bold text-gray-200 mb-2">6. بطاقة شخصية (الأمامية)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">التقاط فوري بالكاميرا:</span>
+                                    <input type="file" name="idFrontCamera" accept="image/*" capture="environment" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-neonPink file:text-white hover:file:bg-pink-700 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">اختيار صورة من المعرض:</span>
+                                    <input type="file" name="idFrontGallery" accept="image/*" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">7. بطاقة شخصية (الخلفية)</label>
-                            <input type="file" name="idBack" accept="image/*" class="w-full text-xs text-gray-400 file:mr-2 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-neonPink file:text-white hover:file:bg-pink-700 bg-darkBg border border-gray-700 rounded-xl p-2">
+
+                        <!-- 7. بطاقة شخصية (الخلفية) -->
+                        <div class="bg-darkBg p-4 rounded-xl border border-gray-700">
+                            <label class="block text-xs font-bold text-gray-200 mb-2">7. بطاقة شخصية (الخلفية)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">التقاط فوري بالكاميرا:</span>
+                                    <input type="file" name="idBackCamera" accept="image/*" capture="environment" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-neonPink file:text-white hover:file:bg-pink-700 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">اختيار صورة من المعرض:</span>
+                                    <input type="file" name="idBackGallery" accept="image/*" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">8. رخصة القيادة (الأمامية)</label>
-                            <input type="file" name="licenseFront" accept="image/*" class="w-full text-xs text-gray-400 file:mr-2 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-neonOrange file:text-white hover:file:bg-orange-700 bg-darkBg border border-gray-700 rounded-xl p-2">
+
+                        <!-- 8. رخصة القيادة (الأمامية) -->
+                        <div class="bg-darkBg p-4 rounded-xl border border-gray-700">
+                            <label class="block text-xs font-bold text-gray-200 mb-2">8. رخصة القيادة (الأمامية)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">التقاط فوري بالكاميرا:</span>
+                                    <input type="file" name="licenseFrontCamera" accept="image/*" capture="environment" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-neonOrange file:text-white hover:file:bg-orange-700 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">اختيار صورة من المعرض:</span>
+                                    <input type="file" name="licenseFrontGallery" accept="image/*" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">9. رخصة القيادة (الخلفية)</label>
-                            <input type="file" name="licenseBack" accept="image/*" class="w-full text-xs text-gray-400 file:mr-2 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-neonOrange file:text-white hover:file:bg-orange-700 bg-darkBg border border-gray-700 rounded-xl p-2">
+
+                        <!-- 9. رخصة القيادة (الخلفية) -->
+                        <div class="bg-darkBg p-4 rounded-xl border border-gray-700">
+                            <label class="block text-xs font-bold text-gray-200 mb-2">9. رخصة القيادة (الخلفية)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">التقاط فوري بالكاميرا:</span>
+                                    <input type="file" name="licenseBackCamera" accept="image/*" capture="environment" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-neonOrange file:text-white hover:file:bg-orange-700 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">اختيار صورة من المعرض:</span>
+                                    <input type="file" name="licenseBackGallery" accept="image/*" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">10. رخصة المركبة (الأمامية)</label>
-                            <input type="file" name="vehicleFront" accept="image/*" class="w-full text-xs text-gray-400 file:mr-2 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 bg-darkBg border border-gray-700 rounded-xl p-2">
+
+                        <!-- 10. رخصة المركبة (الأمامية) -->
+                        <div class="bg-darkBg p-4 rounded-xl border border-gray-700">
+                            <label class="block text-xs font-bold text-gray-200 mb-2">10. رخصة المركبة (الأمامية)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">التقاط فوري بالكاميرا:</span>
+                                    <input type="file" name="vehicleFrontCamera" accept="image/*" capture="environment" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">اختيار صورة من المعرض:</span>
+                                    <input type="file" name="vehicleFrontGallery" accept="image/*" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">11. رخصة المركبة (الخلفية)</label>
-                            <input type="file" name="vehicleBack" accept="image/*" class="w-full text-xs text-gray-400 file:mr-2 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 bg-darkBg border border-gray-700 rounded-xl p-2">
+
+                        <!-- 11. رخصة المركبة (الخلفية) -->
+                        <div class="bg-darkBg p-4 rounded-xl border border-gray-700">
+                            <label class="block text-xs font-bold text-gray-200 mb-2">11. رخصة المركبة (الخلفية)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">التقاط فوري بالكاميرا:</span>
+                                    <input type="file" name="vehicleBackCamera" accept="image/*" capture="environment" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block mb-1">اختيار صورة من المعرض:</span>
+                                    <input type="file" name="vehicleBackGallery" accept="image/*" class="w-full text-xs text-gray-300 file:mr-1 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-gray-600 bg-cardBg border border-gray-700 rounded-lg p-1.5">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
