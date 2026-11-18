@@ -314,24 +314,20 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري إرسال البيانات...';
 
-            const formData = new FormData(this);
+            // تجهيز البيانات النصية الأساسية فقط لتجنب تعليق الإرسال
+            const formData = new FormData();
+            formData.append('fullName', document.getElementById('fullName').value);
+            formData.append('phoneNumber', document.getElementById('phoneNumber').value);
+            formData.append('workSystem', document.getElementById('workSystem').value);
+            formData.append('workRegion', document.getElementById('workRegion').value);
+            formData.append('supplierName', document.getElementById('supplierName').value);
+            formData.append('notes', document.getElementById('notes').value);
 
-            // استخدام mode: 'no-cors' لمنع تعليق المتصفح وضمان وصول البيانات فوراً للجدول
             fetch(scriptURL, { 
                 method: 'POST', 
                 mode: 'no-cors',
                 body: formData 
             })
-            .then(() => {
-                alert('تم تسجيل بياناتك بنجاح يا باشمهندس وتم حفظها في الجدول!');
-                this.reset();
-                btn.disabled = false;
-                btn.innerHTML = '<i class="fa-solid fa-paper-plane ml-2"></i> إرسال استمارة التسجيل';
-            })
-            .catch(error => {
-                console.error('Error!', error);
-                alert('تم الإرسال بنجاح (يرجى التحقق من الجدول).');
-                this.reset();
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fa-solid fa-paper-plane ml-2"></i> إرسال استمارة التسجيل';
             });
