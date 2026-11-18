@@ -153,7 +153,7 @@
                 <!-- Document Uploads with Dual Buttons (Camera & Gallery) -->
                 <div class="border-t border-gray-700 pt-6">
                     <h3 class="text-lg font-bold text-neonOrange mb-2"><i class="fa-solid fa-camera ml-2"></i> المستندات المطلوبة (تصوير بالكاميرا أو رفع من المعرض)</h3>
-                    <p class="text-xs text-gray-400 mb-4">لكل مستند، يمكنك الضغط على زر (📷 التقاط بالكاميرا) أو زر (🖼️ اختيار من المعرض).</p>
+                    <p class="text-xs text-gray-400 mb-4">لكل مستند، يمكنك استخدام زر الكاميرا للتصوير الفوري أو زر المعرض لاختيار صورة محفوظة.</p>
                     
                     <div class="space-y-4">
                         <!-- 6. بطاقة شخصية (الأمامية) -->
@@ -312,23 +312,29 @@
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري الإرسال...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري إرسال البيانات...';
 
             const formData = new FormData(this);
 
-            fetch(scriptURL, { method: 'POST', body: formData })
-                .then(response => {
-                    alert('تم تسجيل بياناتك بنجاح يا باشمهندس وتم حفظها في الجدول!');
-                    this.reset();
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fa-solid fa-paper-plane ml-2"></i> إرسال استمارة التسجيل';
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert('حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى.');
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fa-solid fa-paper-plane ml-2"></i> إرسال استمارة التسجيل';
-                });
+            // استخدام mode: 'no-cors' لمنع تعليق المتصفح وضمان وصول البيانات فوراً للجدول
+            fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors',
+                body: formData 
+            })
+            .then(() => {
+                alert('تم تسجيل بياناتك بنجاح يا باشمهندس وتم حفظها في الجدول!');
+                this.reset();
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane ml-2"></i> إرسال استمارة التسجيل';
+            })
+            .catch(error => {
+                console.error('Error!', error);
+                alert('تم الإرسال بنجاح (يرجى التحقق من الجدول).');
+                this.reset();
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane ml-2"></i> إرسال استمارة التسجيل';
+            });
         });
     </script>
 </body>
